@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Your daily tasks, carried forward until done." />
+  <title>Karm — Tasks that follow you forward</title>
+  <link rel="icon" href="icon.png" />
+  <link rel="apple-touch-icon" href="icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #141F16;
+      --text: #F2F6F3;
+      --text-60: rgba(242, 246, 243, 0.6);
+      --text-45: rgba(242, 246, 243, 0.45);
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #F3F5F2;
+        --text: #1A2A1E;
+        --text-60: rgba(26, 42, 30, 0.6);
+        --text-45: rgba(26, 42, 30, 0.45);
+      }
+    }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      max-width: 420px;
+      width: 100%;
+    }
+    .icon {
+      width: 96px;
+      height: 96px;
+      border-radius: 22px;
+      margin-bottom: 24px;
+    }
+    .app-name {
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .tagline {
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+    .body {
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--text-60);
+      line-height: 1.6;
+      margin-bottom: 36px;
+    }
+    .badge {
+      display: inline-block;
+      margin-bottom: 48px;
+      transition: opacity 0.14s ease;
+    }
+    .badge:hover {
+      opacity: 0.8;
+    }
+    .badge img {
+      height: 44px;
+      display: block;
+    }
+    .footer {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-45);
+      letter-spacing: 0.2px;
+    }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <img class="icon" src="icon.png" alt="Karm" />
+    <h1 class="app-name">Karm</h1>
+    <p class="tagline">Tasks that follow you forward.</p>
+    <p class="body">
+      Your daily tasks, carried forward until done.<br />
+      Unfinished work doesn't disappear — it waits.
+    </p>
+    <a class="badge" href="https://apps.apple.com/us/app/karm-tasks-that-follow/id6778794889">
+      <picture>
+        <source media="(prefers-color-scheme: light)" srcset="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" />
+        <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/white/en-us?size=250x83" alt="Download on the App Store" />
+      </picture>
+    </a>
+    <p class="footer">Karm is the Nepali word for work.</p>
+  </div>
+</body>
+</html>
