@@ -18,37 +18,52 @@
   <link rel="apple-touch-icon" href="icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet" />
   <style>
+    /* ── Tokens ─────────────────────────────────────────────────── */
     :root {
-      --bg: #141F16;
-      --text: #F2F6F3;
-      --text-60: rgba(242, 246, 243, 0.6);
-      --text-45: rgba(242, 246, 243, 0.45);
+      --bg:        #141F16;
+      --text:      #F2F6F3;
+      --text-sec:  rgba(242, 246, 243, 0.62);
+      --text-sub:  rgba(242, 246, 243, 0.52);
+
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-body:    'Figtree', system-ui, sans-serif;
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     }
+
     @media (prefers-color-scheme: light) {
       :root {
-        --bg: #F3F5F2;
-        --text: #1A2A1E;
-        --text-60: rgba(26, 42, 30, 0.6);
-        --text-45: rgba(26, 42, 30, 0.45);
+        --bg:       #F3F5F2;
+        --text:     #1A2A1E;
+        --text-sec: #506458;
+        --text-sub: #566B5C;
       }
     }
+
+    /* ── Reset ──────────────────────────────────────────────────── */
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
+
+    /* ── Base ───────────────────────────────────────────────────── */
     body {
-      font-family: 'DM Sans', sans-serif;
+      font-family: var(--font-body);
       background-color: var(--bg);
       color: var(--text);
       min-height: 100dvh;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 40px 20px;
+      padding: 48px 24px;
+      font-optical-sizing: auto;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
+
+    /* ── Layout ─────────────────────────────────────────────────── */
     .hero {
       display: flex;
       flex-direction: column;
@@ -57,82 +72,144 @@
       max-width: 420px;
       width: 100%;
     }
+
+    /* ── Icon ───────────────────────────────────────────────────── */
     .icon {
       width: 96px;
       height: 96px;
       border-radius: 22px;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
+
+    /* ── App name ───────────────────────────────────────────────── */
     .app-name {
-      font-size: 28px;
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 5vw, 2.25rem);
       font-weight: 600;
-      letter-spacing: -0.3px;
+      letter-spacing: -0.03em;
       color: var(--text);
-      margin-bottom: 8px;
+      line-height: 1;
+      margin-bottom: 10px;
     }
+
+    /* ── Tagline ────────────────────────────────────────────────── */
     .tagline {
-      font-size: 20px;
-      font-weight: 500;
-      color: var(--text);
-      margin-bottom: 16px;
-      line-height: 1.3;
-    }
-    .body {
-      font-size: 15px;
+      font-family: var(--font-display);
+      font-size: clamp(1.125rem, 3vw, 1.375rem);
       font-weight: 400;
-      color: var(--text-60);
-      line-height: 1.6;
-      margin-bottom: 36px;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      line-height: 1.3;
+      margin-bottom: 16px;
+      text-wrap: balance;
     }
+
+    /* ── Body ───────────────────────────────────────────────────── */
+    .body {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--text-sec);
+      line-height: 1.65;
+      letter-spacing: -0.01em;
+      margin-bottom: 40px;
+      text-wrap: pretty;
+    }
+
+    /* ── Badge ──────────────────────────────────────────────────── */
     .badge {
       display: inline-block;
       margin-bottom: 48px;
-      transition: opacity 0.14s ease;
+      touch-action: manipulation;
+      transition: opacity 180ms ease,
+                  transform 220ms var(--ease-out-expo);
     }
-    .badge:hover {
-      opacity: 0.8;
+    .badge:hover  { opacity: 0.87; transform: scale(1.025); }
+    .badge:active { opacity: 0.94; transform: scale(0.975); }
+    .badge:focus-visible {
+      outline: 2px solid var(--text);
+      outline-offset: 4px;
+      border-radius: 6px;
     }
     .badge img {
       height: 44px;
       display: block;
     }
+
+    /* ── Footer ─────────────────────────────────────────────────── */
     .footer {
-      font-size: 12px;
+      font-size: 0.8125rem;
       font-weight: 500;
-      color: var(--text-45);
-      letter-spacing: 0.2px;
+      color: var(--text-sub);
+      letter-spacing: 0.01em;
+      line-height: 1.5;
+      text-align: center;
+    }
+    .footer p + p {
+      margin-top: 6px;
     }
     .footer a {
-      color: var(--text-45);
+      color: var(--text-sub);
       text-decoration: none;
+      transition: color 150ms ease;
     }
-    .footer a:hover {
-      color: var(--text-60);
+    .footer a:hover { color: var(--text); }
+    .footer a:focus-visible {
+      outline: 2px solid var(--text);
+      outline-offset: 2px;
+      border-radius: 2px;
     }
-    .footer-links {
-      margin-top: 8px;
+
+    /* ── Entrance animation ──────────────────────────────────────── */
+    @keyframes fadeRise {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero > * {
+      animation: fadeRise 500ms var(--ease-out-expo) both;
+    }
+    .icon     { animation-delay:   0ms; }
+    .app-name { animation-delay:  70ms; }
+    .tagline  { animation-delay: 130ms; }
+    .body     { animation-delay: 190ms; }
+    .badge    { animation-delay: 260ms; }
+    .footer   { animation-delay: 320ms; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero > * {
+        animation: none;
+        opacity: 1;
+        transform: none;
+      }
+      .badge { transition: none; }
+      .footer a { transition: none; }
     }
   </style>
 </head>
 <body>
-  <div class="hero">
-    <img class="icon" src="icon.png" alt="Karm" />
+  <main class="hero">
+    <img class="icon" src="icon.png" alt="Karm app icon" />
     <h1 class="app-name">Karm</h1>
     <p class="tagline">Tasks that follow you forward.</p>
     <p class="body">
       Your daily tasks, carried forward until done.<br />
       Unfinished work doesn't disappear — it waits.
     </p>
-    <a class="badge" href="https://apps.apple.com/us/app/karm-tasks-that-follow/id6778794889">
+    <a class="badge"
+       href="https://apps.apple.com/us/app/karm-tasks-that-follow/id6778794889"
+       aria-label="Download Karm on the App Store">
       <picture>
-        <source media="(prefers-color-scheme: light)" srcset="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" />
-        <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/white/en-us?size=250x83" alt="Download on the App Store" />
+        <source media="(prefers-color-scheme: light)"
+                srcset="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" />
+        <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/white/en-us?size=250x83"
+             alt="Download on the App Store" />
       </picture>
     </a>
-    <p class="footer">Karm is the Sanskrit word for work.</p>
-    <p class="footer footer-links">
-      <a href="/support">Support</a> &middot; <a href="/privacy-policy">Privacy Policy</a>
-    </p>
-  </div>
+    <footer class="footer">
+      <p>Karm is the Sanskrit word for work.</p>
+      <p><a href="/support">Support</a> &middot; <a href="/privacy-policy">Privacy Policy</a></p>
+    </footer>
+  </main>
 </body>
 </html>

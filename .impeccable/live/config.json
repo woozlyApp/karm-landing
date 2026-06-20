@@ -1,0 +1,6 @@
+{
+  "files": ["index.html", "support/index.html", "privacy-policy/index.html"],
+  "insertBefore": "</body>",
+  "commentSyntax": "html",
+  "cspChecked": true
+}
